@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int sprawdzCzyJest( int element, int tab[], int rozmiar); //deklaracja funkcji
+
+
+int main() {
+	int tab[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	int rozmiar = sizeof(tab) / sizeof(tab[0]); //rozmiar w bajtach tabeli dzielony na rozmiar w bajtach elementu tabeli = rozmiar tabeli
+	int index;
+	int element; 
+
+	cout << "Podaj element, ktory chcesz znalezc w tablicy: " << endl;
+	cin >> element;
+
+	index =  sprawdzCzyJest(element,tab,rozmiar); //przypisanie outputu funkcji do zmiennej
+
+		if (index != -1) {
+			cout << "element '"<<element<<"' znajduje sie pod indexem tab["<<index<<"]";
+
+		}
+		else {
+			cout << "Podany element nie znajduje sie w tablicy.";
+		}
+		
+	
+	return 0;
+}
+int sprawdzCzyJest(int element, int tab[], int rozmiar) {
+	for (int i = 0; i < rozmiar; i++) {
+		if (tab[i] == element) {
+			return element;
+		}
+		
+	}
+	return -1; //element nie istnieje
+
+}
