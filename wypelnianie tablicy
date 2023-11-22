@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+
+int main() {
+	const int size = 180;
+	string tablica[size];
+
+	fill(tablica, tablica + (size/3), "a");
+	fill(tablica + (size/3), tablica + (size / 3)*2, "b");
+	fill(tablica + (size / 3) * 2, tablica + (size / 3) * 3, "c");
+	for (string tab : tablica) {
+		cout << tab << " ";
+	}
+
+	return 0;
+}
