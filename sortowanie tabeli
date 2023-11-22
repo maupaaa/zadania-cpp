@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+void sort(int tab[], int size);
+
+int main() {
+	int tab[] = { 2, 34, 2, 45, 12, 4, 2, 34 };
+	int size = sizeof(tab) / sizeof(tab[0]);
+
+	sort(tab, size); //wywolanie funkcji
+	
+	for (int i = 0; i < size; i++) {
+		cout << tab[i] << ", ";
+	}
+
+	return 0;
+}
+
+void sort(int tab[], int size) {
+	int temp;
+	for (int i = 0; i < size - 1; i++) { 
+		for (int j = 0; j < size - 1 - i; j++) {
+			if (tab[j]>tab[j + 1]) {
+				temp = tab[j]; // 
+				tab[j] = tab[j + 1]; // a chuj wie co to robi ale to sie nazywa bubble sorting wiec to tak naprawde na pamiec trzeba bo CHYBA zawsze jest tak samo 
+				tab[j + 1] = temp; //
+			}
+		}
+	}
+}
