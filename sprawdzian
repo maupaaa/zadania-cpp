@@ -1,0 +1,79 @@
+#include <iostream>
+#include <math.h>
+#include <ctime>
+using namespace std;
+const double PI = 3.14159265359;
+
+struct Wektor {
+	double x;
+	double y;
+
+	Wektor(double x = 0, double y = 0)
+	{
+		this->x = x;
+		this->y = y;
+	}
+
+	void dod(Wektor wektor2)
+	{
+		this->x = x + wektor2.x;
+		this->y = y + wektor2.y;
+	}
+
+	void odejm(Wektor wektor2)
+	{
+		this->x = x - wektor2.x;
+		this->y = y - wektor2.y;
+	}
+
+	void mn(double n)
+	{
+		this->x *= n;
+		this->y *= n;
+	}
+
+	void wartK()
+	{
+		cout << "wartosc w ukladzie kartezjanskim: x= " << x << "y= " << y << "\n";
+	}
+
+	void wartB()
+	{
+
+		double r = sqrt(x * x + y * y);
+		double alfa = abs(atan(y / x) * (180 / PI));
+
+		cout << "Wartosci w ukladzie biegunowym: r= " << r << " alfa= " << alfa<<"\n";
+	}
+
+	void dlugoscw()
+	{
+		cout << "dlugosc wektora: " << sqrt(x * x + y * y) << endl;
+	}
+
+};
+
+int main()
+{
+	srand(time(NULL));
+	int n;
+	cout << "podaj liczbe wektorow n, ktora ma zostac wygenerowana: ";
+	cin >> n;
+	cout << "\n";
+	Wektor suma(0, 0);
+
+	for (int i = 0; i < n; i++)
+	{
+		int x = (rand() % 200) - 100;
+		int y = (rand() % 200) - 100;
+
+		Wektor random(x, y);
+
+		cout <<"Wartosc x = " << x << ", Wartosc y = " << y << "\n";
+		suma.dod(random);
+		suma.wartB();
+		suma.dlugoscw();
+		cout << "\n";
+	}
+
+}
