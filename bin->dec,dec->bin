@@ -1,0 +1,62 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+int bindec(long long n) {
+	int dec = 0, i = 0, resz;
+
+	while (n != 0) {
+		resz = n % 10;
+		n /= 10;
+		dec += resz * pow(2, i);
+		++i;
+	}
+
+	return dec;
+}
+
+
+int main(){
+	int wynik;
+	int lbin;
+
+	cout << "[1] Konwersja liczby binarnej na dziesietna" << endl;
+	cout << "[2] Konwersja liczby dziesietnej na liczbe binarna" << endl;
+	cin >> wynik;
+	switch(wynik){
+	
+	case 1:	
+	cout << "Podaj liczbe zapisana w systemie binarnym: " << endl;
+	cin >> lbin;
+
+
+	cout << "Twoja liczba zapisana w systemie dziesiatkowym to: " << bindec(lbin) << endl;
+	
+	break;
+	
+	case 2: 
+	int a[10], n, i;
+	cout << "Podaj liczbe dziesietna: ";
+	cin >> n;
+	for (i = 0; n > 0; i++)
+	{
+		a[i] = n % 2;
+		n = n / 2;
+	}
+	cout << "Twoja liczba w systemie binarnym to:  ";
+	for (i = i - 1; i >= 0; i--)
+	{
+		cout << a[i];
+	}
+	for (i = i - 1; i >= 0; i--)
+	{
+		for (i = 0; n > 0; i++)
+		{
+			a[i] = n % 2;
+			n = n / 2;
+		}
+	}
+	cout << "\n";
+	break;
+	}
+}
