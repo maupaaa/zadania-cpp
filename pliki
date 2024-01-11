@@ -1,0 +1,87 @@
+#include <iostream>
+#include <locale.h>
+#include <fstream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+int Fib(int n)
+{
+	if (n == 1)
+	{
+		return 1;
+	}
+	if (n == 2)
+	{
+		return 1;
+	}
+	if (n > 2)
+	{
+		return Fib(n - 1) + Fib(n - 2);
+	}
+}
+
+int Silnia(int n)
+{
+	if (n < 2)
+	{
+		return 1;
+	}
+	else
+	{
+		return n * Silnia(n - 1);
+	}
+}
+
+int main()
+{
+	setlocale(LC_ALL, "polish");
+
+	//int n = 6;
+	//cout << "Podaj n: ";
+	//cin >> n;
+	//cout << "Ciag fibbonaciego: ";
+	//cout << Fib(n);
+	//cout << "\nSilnia: ";
+	//cout << Silnia(n);
+
+	fstream plik;
+	plik.open("plik.txt");
+	vector<string> zawartosc;
+	vector<int> zawartosc2;
+	if (plik.is_open())
+	{
+		cout << "Uzyskano dostęp do pliku!\n";
+		//plik >> zawartosc;//pierwsza linijka pliku.txt
+		//cout << zawartosc;//wyświetlenie linii
+		string bufor;
+		while (!plik.eof())
+		{
+			getline(plik, bufor);
+			zawartosc.push_back(bufor);
+		}
+	}
+	plik.close();
+
+	for (auto x : zawartosc)
+	{
+		cout << x << endl;
+
+	}
+	cout << "Rozpoczynanie nadpisywania pliku...";
+	plik.open("plik.txt", ios::trunc | ios::out);
+	if (plik.is_open())
+	{
+		//plik >> zawartosc;//pierwsza linijka pliku.txt
+		//cout << zawartosc;//wyświetlenie linii
+		
+		for (int i = 0; i <= 15; i++)
+		{
+			plik << i+12 << endl;
+		}
+
+	}
+	plik.close();
+
+}
