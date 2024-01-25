@@ -1,0 +1,72 @@
+#include <cstdlib>
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+bool palindrom(string wyraz)
+{
+    string odwrocony;  
+    int dlugosc = wyraz.length();
+
+    for (int i = 0; i < dlugosc; i++)
+    {
+        odwrocony += wyraz[dlugosc - i - 1];
+    }
+    return wyraz == odwrocony;
+}
+
+bool anagram(const string& slowo1, const string& slowo2) {
+    if (slowo1.length() != slowo2.length()) {
+        return false;
+    }
+
+    int charCount[256] = { 0 }; 
+
+    for (char c : slowo1) {
+        charCount[c]++;
+    }
+
+    for (char c : slowo2) {
+        charCount[c]--;
+    }
+
+    for (int count : charCount) {
+        if (count != 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+int main()
+{
+    string wyraz, slowo1, slowo2;
+
+    cout << "Podaj wyraz:" << endl;
+    cin >> wyraz;
+
+    if (palindrom(wyraz) == true)
+    {
+        cout << "Wyraz jest palindromem" << endl;
+    }
+    else
+    {
+        cout << "Wyraz nie jest palindromem" << endl;
+    }
+
+    cout << "Podaj slowo 1: " << endl;
+    cin >> slowo1;
+    cout << "Podaj slowo 2: " << endl;
+    cin >> slowo2;
+    if (anagram(slowo1, slowo2) == true) {
+        cout << "Podane slowa sa anagramami";
+    }
+    else {
+        cout << "Podane slowa nie sa anagramami";
+    }
+
+    return 0;
+}
