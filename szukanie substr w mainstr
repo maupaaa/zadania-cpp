@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int placement(string mainstr, string searchstr) {
+	int position = -1;
+	int mainsize = mainstr.size();
+	int searchsize = searchstr.size();
+	for (int i = 0; i < mainsize; i++) {
+		int j = 0;
+		if (mainstr[i] == searchstr[j]) {
+			int k = i;
+			position = i;
+			while (mainstr[i] == searchstr[j] && j < searchsize) {
+				i++;
+				j++;
+			}
+		
+		if (j == searchsize) {
+			return position + 1;
+			}
+		else {
+			i = k;
+			position = -1;
+			}
+		}
+	}
+	return position;
+}
+
+int main() {
+	int wybor;
+	cout << "[1] Znajduje sie w stringu" << endl;
+	cout << "[2] Nie znajduje sie w stringu" << endl;
+	cin >> wybor;
+	if (wybor == 1) {
+		string mainstr = "Ala ma kota, ktory jest ka";
+		string searchstr = "kotka";
+		cout << placement(mainstr, searchstr);
+	}
+	else {
+		string mainstr = "Ala ma kota";
+		string searchstr = "pies";
+		cout << placement(mainstr, searchstr);
+	}
+
+
+}
