@@ -22,7 +22,7 @@ void sort(int tab[], int size) {
 		for (int j = 0; j < size - 1 - i; j++) {
 			if (tab[j]>tab[j + 1]) {
 				temp = tab[j]; // 
-				tab[j] = tab[j + 1]; // a chuj wie co to robi ale to sie nazywa bubble sorting wiec to tak naprawde na pamiec trzeba bo CHYBA zawsze jest tak samo 
+				tab[j] = tab[j + 1]; 
 				tab[j + 1] = temp; //
 			}
 		}
